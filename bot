@@ -1,0 +1,53 @@
+//connexion du bot :
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+var prefix = '.'
+var token = 'Njg5OTEzMTI4MjE2OTUzMDA3.Xoi4IQ.nhoD-cS_KGIT4GOls6LwP9wbmwM'
+var ertyt = 'salut'
+
+client.login(token)
+client.on('ready', function (){
+    console.log('je suis connecté !')
+    client.user.setActivity('les videos de TT ROYAL!' , {type : 'WATCHING'})
+})
+
+//commandes:
+client.on('message' , function(message){
+	if(message.content.includes(prefix + 'off' )) {
+      if (!message.guild.member(message.author).hasPermission('ADMINISTRATOR')) { return message.channel.send("vous n'avez pas les permissions !" ); } 
+    message.channel.send('au revoir')
+        message.delete().then(client.destroy()) 
+}
+})
+
+
+client.on('message' , function(message){
+	if(message.content.includes(prefix + 'combat' )) {
+        message.channel.send("aucun combat n'est prévu :(")
+}
+})
+
+client.on('message' , function(message){
+	if(message.content.includes(prefix + 'slt')) {
+        message.channel.send('salut')
+message.delete() 
+}
+})
+
+
+
+client.on('message' , function(message){
+	if(message.content.includes(prefix + 'help')) {
+    message.channel.send('Voici la liste des commandes:⬇️').then(message.channel.send('> c. combat').then(message.channel.send('> permet de savoir si un combat du tournois est organisé ')).then(message.channel.send('-')).then(message.channel.send('> gegtnrg' )).then(message.channel.send('> sert à fjdj')))
+}
+})
+
+client.on('message' , function(message){
+if(message.content.includes(prefix + 'clear')) {
+    message.channel.send('Les messages on été supprimés️')
+message.delete().then(message.channel.bulkDelete(args[0]))
+}
+})
+
